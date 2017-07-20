@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wintelia.admin.adminDao.MemberDao">
+	<!--添加新会员 -->
+	<insert id="AddMember">
+		insert into
+		t_member(memberName,memberPassword,memberTruthName,memberGroupID,memberGroupName,memberStatus,memberAddTime,memberEmail)
+		VALUES(#{memberName},#{memberPassword},#{memberTruthName},#{memberGroupID},#{memberGroupName},#{memberStatus},#{memberAddTime},#{memberEmail})
+	</insert>
+	<!-- 根据ID查询会员信息 -->
+	<select id="GetMemberInfoByID" resultType="MemberModel">
+		SELECT
+		t_member.ID,
+		t_member.memberName,
+		t_member.memberPassword,
+		t_member.memberTruthName,
+		t_member.memberGroupID,
+		t_member.memberGoupName,
+		t_member.memberStatus,
+		t_member.memberAddtime,
+		t_member.memberEmail
+		FROM t_member
+		where ID=#{ID}
+	</select>
+	<!-- 根据会员名查询会员信息 -->
+	<select id="GetMemberInfoByUserName" resultType="MemberModel">
+		SELECT
+		t_member.ID,
+		t_member.memberName,
+		t_member.memberPassword,
+		t_member.memberTruthName,
+		t_member.memberGroupID,
+		t_member.memberGoupName,
+		t_member.memberStatus,
+		t_member.memberAddtime,
+		t_member.memberEmail
+		FROM t_member
+		where memberName=#{memberName}
+	</select>
+	<!-- 根据真实姓名查询会员信息 -->
+	<select id="GetMemberInfoByTurthName" resultType="MemberModel">
+		SELECT
+		t_member.ID,
+		t_member.memberName,
+		t_member.memberPassword,
+		t_member.memberTruthName,
+		t_member.memberGroupID,
+		t_member.memberGoupName,
+		t_member.memberStatus,
+		t_member.memberAddtime,
+		t_member.memberEmail
+		FROM t_member
+		where
+		memberTruthName=#{memberTruthName}
+	</select>
+	<!--分页查询所有的会员信息 -->
+	<select id="GetAllMemberListByPage" resultType="MemberModel">
+		SELECT
+		t_member.ID,
+		t_member.memberName,
+		t_member.memberPassword,
+		t_member.memberTruthName,
+		t_member.memberGroupID,
+		t_member.memberGoupName,
+		t_member.memberStatus,
+		t_member.memberAddtime,
+		t_member.memberEmail
+		FROM t_member
+		LIMIT ((#{page}-1)*#{pagesize})
+		(#{pagesize})
+	</select>
+	<!-- 根据查询条件分页查询数据 -->
+	<select id="GetMemberListByWhere" resultType="MemberModel">
+		SELECT
+		t_member.ID,
+		t_member.memberName,
+		t_member.memberPassword,
+		t_member.memberTruthName,
+		t_member.memberGroupID,
+		t_member.memberGoupName,
+		t_member.memberStatus,
+		t_member.memberAddtime,
+		t_member.memberEmail
+		FROM t_member
+		#{where}
+		LIMIT
+		((#{page}-1)*#{pagesize}) (#{pagesize})
+	</select>
+	<!-- 根据ID更新会员信息 -->
+	<update id="UpdateMemberInfoByID">
+		update t_member
+		set
+		memberName=#{memberName},
+		memberTruthName=#{memberTruthName},
+		memberGroupID=#{memberGroupID},
+		memberGoupName=#{memberGoupName},
+		memberEmail=#{memberEmail}
+		where
+		ID=#{ID}
+	</update>
+	<!-- 据ID更新会员状态 -->
+	<update id="UpdateMemberStatusByID">
+		update t_member
+		set
+		memberStatus=#{memberStatus}
+		where
+		ID=#{ID}
+	</update>
+</mapper>

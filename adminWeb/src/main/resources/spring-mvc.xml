@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="    
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/mvc  http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+	<mvc:view-controller path="/" view-name="redirect:/index2" />
+	<context:annotation-config />
+	<context:component-scan base-package="com.wintelia.admin.adminController" />
+	<context:component-scan base-package="com.wintelia.admin.adminService" />
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	<mvc:annotation-driven />
+	<mvc:resources location="/assets/css/" mapping="/css/**" />
+	<mvc:resources location="/assets/font-awesome/" mapping="/font-awesome/**" />
+	<mvc:resources location="/assets/fonts/" mapping="/fonts/**" />
+	<mvc:resources location="/assets/images/" mapping="/images/**" />
+	<mvc:resources location="/assets/js/" mapping="/js/**" />
+	<mvc:resources location="/assets/swf/" mapping="/swf/**" />
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/css/**" />
+			<mvc:exclude-mapping path="/font-awesome/**" />
+			<mvc:exclude-mapping path="/fonts/**" />
+			<mvc:exclude-mapping path="/images/**" />
+			<mvc:exclude-mapping path="/js/**" />
+			<mvc:exclude-mapping path="/swf/**" />
+			<bean class="com.wintelia.admin.adminFilters.MyHandleInteroptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+</beans>  

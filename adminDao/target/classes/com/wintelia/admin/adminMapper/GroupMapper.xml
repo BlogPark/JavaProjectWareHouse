@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wintelia.admin.adminDao.GroupDao">
+
+	<insert id="AddGroup" parameterType="GroupModel">
+		INSERT INTO t_group
+		(groupName,groupAlt,groupStatus,groupAddTime)
+		VALUES
+		(#{groupName},#{groupAlt},#{groupStatus},#{groupAddTime})
+	</insert>
+
+	<select id="GetGroupInfoByID" resultType="GroupModel"
+		parameterType="int">
+		SELECT
+		t_group.ID,
+		t_group.groupName,
+		t_group.groupAlt,
+		t_group.groupStatus,
+		t_group.groupAddTime
+		FROM t_group
+		where ID=#{ID}
+	</select>
+
+	<select id="GetAllGroups" resultType="GroupModel">
+		SELECT
+		t_group.ID,
+		t_group.groupName,
+		t_group.groupAlt,
+		t_group.groupStatus,
+		t_group.groupAddTime
+		FROM t_group
+	</select>
+
+	<select id="GetAllUsedGroups" resultType="GroupModel">
+		SELECT
+		t_group.ID,
+		t_group.groupName,
+		t_group.groupAlt,
+		t_group.groupStatus,
+		t_group.groupAddTime
+		FROM t_group WHERE t_group.groupStatus=1
+	</select>
+
+	<update id="UpdateGroupInfo" parameterType="GroupModel">
+		UPDATE t_group
+		SET
+		groupName = #{groupName},
+		groupAlt = #{groupAlt}
+		WHERE ID = #{ID}
+	</update>
+	<update id="UpdateGroupStaus" parameterType="int">
+		UPDATE t_group
+		SET
+		groupStatus=#{groupStatus}
+		WHERE ID = #{ID}
+	</update>
+</mapper>
