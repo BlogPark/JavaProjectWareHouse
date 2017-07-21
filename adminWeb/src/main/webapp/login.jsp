@@ -10,37 +10,7 @@
 <meta name="description" content="User login page" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-<!-- bootstrap & fontawesome -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/font-awesome/4.5.0/css/font-awesome.min.css" />
-
-<!-- text fonts -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/fonts.googleapis.com.css" />
-
-<!-- ace styles -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/ace.css" />
-
-<!--[if lte IE 9]>
-			<link rel="stylesheet" href="${pageContext.request.contextPath }/css/ace-part2.min.css" />
-		<![endif]-->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/ace-rtl.min.css" />
-
-<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="${pageContext.request.contextPath }/css/ace-ie.min.css" />
-		<![endif]-->
-
-<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-<!--[if lte IE 8]>
-		<script src="${pageContext.request.contextPath }/js/html5shiv.min.js"></script>
-		<script src="${pageContext.request.contextPath }/js/respond.min.js"></script>
-		<![endif]-->
+<jsp:include page="/partviews/includecss.jsp"></jsp:include>
 </head>
 <body class="login-layout light-login">
 	<div class="main-container">
@@ -68,7 +38,8 @@
 											<i class="ace-icon fa fa-coffee green"></i> 平台登录
 										</h2>
 										<div class="space-6"></div>
-										<form method="post" action="${pageContext.request.contextPath }/userlogin">
+										<form method="post"
+											action="${pageContext.request.contextPath }/userlogin">
 											<fieldset>
 												<p>用户名</p>
 												<label class="block clearfix"> <span
@@ -85,11 +56,10 @@
 														id="password" name="password" /> <i
 														class="ace-icon fa fa-lock"></i>
 												</span>
-												</label>
-												<h4 class="errstr center"></h4>
+												</label>												
+												<h4 class="errstr center">${param.logresult}</h4>
 												<div class="space"></div>
-												<input type="hidden" value=""
-													id="model_ReturnUrl" name="">
+												<input type="hidden" value="" id="model_ReturnUrl" name="">
 												<div class="clearfix">
 													<button type="submit"
 														class="width-35 pull-right btn btn-sm btn-primary">
@@ -290,7 +260,7 @@
 							</div>
 							<!-- /.modal-dialog -->
 						</div>
-						<!-- 用户协议 结束 -->						
+						<!-- 用户协议 结束 -->
 					</div>
 				</div>
 				<!-- /.col -->
@@ -300,23 +270,10 @@
 		<!-- /.main-content -->
 	</div>
 	<!-- /.main-container -->
-	<!-- basic scripts -->
-	<!--[if !IE]> -->
-	<script
-		src="${pageContext.request.contextPath }/js/jquery-2.1.4.min.js"></script>
-	<!-- <![endif]-->
-
-	<!--[if IE]>
-<script src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
-	<script type="text/javascript">
-		if ('ontouchstart' in document.documentElement)
-			document
-					.write("<script src='${pageContext.request.contextPath }/js/jquery.mobile.custom.min.js'>"
-							+ "<"+"/script>");
-	</script>
-
-	<!-- inline scripts related to this page -->
+	
+	<jsp:include page="/partviews/includejs.jsp"></jsp:include>
+	
+	<!-- custom scripts related to this page -->
 	<script type="text/javascript">
 		jQuery(function($) {
 			$(document).on('click', '.toolbar a[data-target]', function(e) {

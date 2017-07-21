@@ -2472,7 +2472,7 @@ body.mob-safari .sidebar.sidebar-fixed {
         width: 41px;
         line-height: 32px;
         padding: 0;
-        border-width: 0px;
+        border-width: 8px;
     }
 
         .sidebar .sidebar-shortcuts-large > .btn > .ace-icon {

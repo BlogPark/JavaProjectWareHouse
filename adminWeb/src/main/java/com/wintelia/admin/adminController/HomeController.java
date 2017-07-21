@@ -21,7 +21,7 @@ public class HomeController {
 	@RequestMapping("/index")
 	public ModelAndView IndexPage() {
 		ModelAndView model = new ModelAndView();
-		model.setViewName("index2");
+		model.setViewName("homeindex");
 		return model;
 	}
 
@@ -42,14 +42,15 @@ public class HomeController {
 	@RequestMapping(value = "/userlogin", method = RequestMethod.POST)
 	public ModelAndView userlogin(UserLoginModel user, HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
-		String loginresult = memberservice.UserLogin(user.getUsername(), user.getUsername());
-		if (loginresult == "1") {
+		String loginresult = memberservice.UserLogin(user.getUsername(), user.getPassword());
+		if (loginresult.equals("1")) {
 			MemberModel member = memberservice.GetMemberByUserName(user.getUsername());
 			request.getSession().setAttribute("currentuser", member);
-			model.setViewName("index2");
+			model.setViewName("redirect:/index");
 		} else {
-			model.setViewName("login");
-
+			model.setViewName("redirect:/login");
+			request.setAttribute("loginresult", loginresult);
+			model.addObject("logresult", loginresult);
 		}
 		return model;
 	}
