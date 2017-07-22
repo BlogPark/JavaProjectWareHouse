@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		t_member.memberPassword,
 		t_member.memberTruthName,
 		t_member.memberGroupID,
-		t_member.memberGoupName,
+		t_member.memberGroupName,
 		t_member.memberStatus,
 		t_member.memberAddtime,
 		t_member.memberEmail
