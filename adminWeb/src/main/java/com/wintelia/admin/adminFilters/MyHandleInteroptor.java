@@ -15,7 +15,7 @@ public class MyHandleInteroptor implements HandlerInterceptor {
 			throws Exception {
 		String url = request.getRequestURI();
 		System.out.println("事前控制" + url);
-		if (url.indexOf("login") >= 0)
+		if (url.indexOf("login") >= 0 || url.indexOf("error") >= 0)
 			return true;
 		HttpSession session = request.getSession();
 		MemberModel member = (MemberModel) session.getAttribute("currentuser");

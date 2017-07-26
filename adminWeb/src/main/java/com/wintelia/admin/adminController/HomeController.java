@@ -54,4 +54,9 @@ public class HomeController {
 		}
 		return model;
 	}
+
+	@RequestMapping("/error")
+	public ModelAndView error(HttpServletRequest request) {
+		return new ModelAndView("error");
+	}
 }

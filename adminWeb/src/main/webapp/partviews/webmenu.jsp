@@ -35,7 +35,7 @@
 <!-- /.sidebar-shortcuts -->
 
 <ul class="nav nav-list">
-	<li class=""><a href="index.html"> <i
+	<li class="active"><a href="index.html"> <i
 			class="menu-icon fa fa-tachometer"></i> <span class="menu-text">
 				Dashboard </span>
 	</a> <b class="arrow"></b></li>
@@ -77,8 +77,8 @@
 					</a> <b class="arrow"></b></li>
 				</ul></li>
 
-			<li class=""><a href="admin/groups"> <i
-					class="menu-icon fa fa-caret-right"></i> 用户分组
+			<li class=""><a href="typography.html"> <i
+					class="menu-icon fa fa-caret-right"></i> Typography
 			</a> <b class="arrow"></b></li>
 
 			<li class=""><a href="elements.html"> <i
@@ -232,7 +232,7 @@
 			</a> <b class="arrow"></b></li>
 		</ul></li>
 
-	<li class="active open"><a href="#" class="dropdown-toggle"> <i
+	<li class=""><a href="#" class="dropdown-toggle"> <i
 			class="menu-icon fa fa-file-o"></i> <span class="menu-text">
 				Other Pages <span class="badge badge-primary">5</span>
 		</span> <b class="arrow fa fa-angle-down"></b>
@@ -255,7 +255,7 @@
 					class="menu-icon fa fa-caret-right"></i> Grid
 			</a> <b class="arrow"></b></li>
 
-			<li class="active"><a href="blank.html"> <i
+			<li class=""><a href="blank.html"> <i
 					class="menu-icon fa fa-caret-right"></i> Blank Page
 			</a> <b class="arrow"></b></li>
 		</ul></li>
@@ -268,3 +268,4 @@
 		data-icon1="ace-icon fa fa-angle-double-left"
 		data-icon2="ace-icon fa fa-angle-double-right"></i>
 </div>
+
