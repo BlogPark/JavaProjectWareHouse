@@ -47,7 +47,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE t_group
 		SET
 		groupName = #{groupName},
-		groupAlt = #{groupAlt}
+		groupAlt = #{groupAlt},
+		groupStatus=#{groupStatus}
 		WHERE ID = #{ID}
 	</update>
 	<update id="UpdateGroupStaus" parameterType="int">

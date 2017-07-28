@@ -11,7 +11,14 @@
 	<packaging>war</packaging>
 	<name>adminWeb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	  
 	<dependencies>
+	
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+		</dependency>
+		
 		<!-- 添加Servlet支持 -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

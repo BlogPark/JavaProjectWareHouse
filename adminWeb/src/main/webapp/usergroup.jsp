@@ -70,9 +70,8 @@
 									<div class="clearfix">
 										<div class="pull-left  tableTools-container">
 											<div class="dt-buttons btn-overlap btn-group">
-												<a
-													class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold "
-													data-toggle="modal" href="#modal-addform"> <span>
+												<a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold "
+													data-toggle="modal" href="#modal-addform" onclick="settype(1)"> <span>
 														<i class="fa fa-plus bigger-110 blue"></i> <span>添加用户组</span>
 												</span>
 												</a> <a
@@ -126,9 +125,10 @@
 																<i class="ace-icon fa fa-check bigger-120"></i>
 															</button>
 
-															<button class="btn btn-xs btn-info">
+															<a class="btn btn-xs btn-info" onclick="update(${item.ID})" data-toggle="modal" href="#modal-addform"
+															 data-rel="tooltip" data-placement="top" title="编辑">
 																<i class="ace-icon fa fa-pencil bigger-120"></i>
-															</button>
+															</a>
 
 															<button class="btn btn-xs btn-danger">
 																<i class="ace-icon fa fa-trash-o bigger-120"></i>
@@ -202,7 +202,7 @@
 
 					<div class="modal-body">
 						<div class="row">
-							<form class="form-horizontal" role="form" id="form1" action=""
+							<form class="form-horizontal" role="form" id="form1" action="${pageContext.request.contextPath }/admin/addgroup"
 								method="post">
 								<div class="col-xs-11 col-sm-10 col-xs-offset-1 col-sm-offset-2">
 
@@ -236,6 +236,10 @@
 												value="1">
 										</div>
 									</div>
+									<input id="ID" name="ID" type="hidden"
+												value="1">
+									<input id="type" name="type" type="hidden"
+												value="100">
 								</div>
 							</form>
 						</div>
@@ -268,6 +272,7 @@
 
 	<script type="text/javascript">
 		$(function() {
+			$('[data-rel=tooltip]').tooltip();
 			$('#chk_status').on('switch-change', function(e, data) {
 				var value = data.value;
 				if (value) {
@@ -335,15 +340,16 @@
 			var gid = row.find("td").eq(1).html();
 			var gname = row.find("td").eq(2).html();
 			var galt = row.find("td").eq(3).html();
-			var gta = row.find("td").eq(4).find("span").html();
-			$("#update_ID").val(gid);
-			$("#update_GroupName").val(gname);
-			$("#update_GroupAlt").val(galt);
-			$("#update_GroupStatus").val(gta);
+			var gta = row.find("td").eq(4).html();
+			$("#ID").val(gid);
+			$("#groupName").val(gname);
+			$("#groupAlt").val(galt);
+			$("#groupStatus").val(gta);
+			$("#type").val(2)
 			if (gta == 1)
-				$("#upd_status").bootstrapSwitch('setState', true);
+				$("#chk_status").bootstrapSwitch('setState', true);
 			else
-				$("#upd_status").bootstrapSwitch('setState', false);
+				$("#chk_status").bootstrapSwitch('setState', false);
 		}
 
 		function del() {
@@ -381,9 +387,12 @@
 						}
 					});
 		}
+		function settype(type){
+			$("#type").val(type);
+		}
 		function submitform(name) {
-			var textstr = $("#" + name).valid();
-			if (textstr)
+			//var textstr = $("#" + name).valid();
+			//if (textstr)
 				document.getElementById(name).submit();
 		}
 	</script>
