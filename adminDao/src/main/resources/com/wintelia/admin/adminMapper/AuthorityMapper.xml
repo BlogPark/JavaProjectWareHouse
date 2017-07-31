@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wintelia.admin.adminDao.AuthorityDao">
+	<!-- 添加新权限 -->
+	<insert id="AddNewAuthority">
+		Insert into t_authority
+		(groupID,
+		groupName,
+		menuID,
+		menuName,
+		authorStatus,
+		authorTime)
+		value(#groupID,
+		#groupName,
+		#menuID,
+		#menuName,
+		#authorStatus,
+		#authorTime)
+	</insert>
+	<!--根据分组查询所有的权限菜单 -->
+	<select id="GetAuthoritesByGroupID">
+		SELECT ID,
+		groupID,
+		groupName,
+		menuID,
+		menuName,
+		authorStatus,
+		authorTime
+		FROM t_authority where groupID=#groupID
+	</select>
+	<!--根据分组和菜单更改状态 -->
+	<update id="UpdateAuthorityStatus">
+	Update t_authority set authorStatus=#statusnum where groupID=#groupid and menuID=#menuid
+	</update>
+	<!--根据ID更改状态 -->
+	<update id="UpdateAuthorityStatusByID">Update t_authority set authorStatus=#statusnum where ID=#id</update>
+</mapper>
