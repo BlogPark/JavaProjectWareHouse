@@ -7,8 +7,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../adminIntegration/pom.xml</relativePath>
 	</parent>
-	
-	<artifactId>adminDao</artifactId>	
+
+	<artifactId>adminDao</artifactId>
 	<packaging>jar</packaging>
 
 	<name>adminDao</name>
@@ -19,6 +19,15 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>

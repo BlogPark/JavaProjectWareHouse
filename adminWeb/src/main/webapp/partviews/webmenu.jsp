@@ -81,8 +81,8 @@
 					class="menu-icon fa fa-caret-right"></i> 用户分组
 			</a> <b class="arrow"></b></li>
 
-			<li class=""><a href="elements.html"> <i
-					class="menu-icon fa fa-caret-right"></i> Elements
+			<li class=""><a href="${pageContext.request.contextPath }/admin/menus"> <i
+					class="menu-icon fa fa-caret-right"></i> 系统菜单
 			</a> <b class="arrow"></b></li>
 
 			<li class=""><a href="buttons.html"> <i

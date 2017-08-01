@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wintelia.admin.adminDao.MenuDao">
 	<!--添加新菜单 -->
-	<insert id="AddNewMenu">
+	<insert id="AddNewMenu" parameterType="MenusModel">
 		INSERT INTO t_menus (
 		mName, mFatherID,
 		mFatherName,mAlt,mController,mAction,mLinkUrl,mStatus,mAddTime,mIconName)
@@ -12,25 +12,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(#mName,#mFatherID,#mFatherName,#mAlt,#mController,#mAction,#mLinkUrl,#mStatus,#mAddTime,#mIconName)
 	</insert>
 	<!-- 根据ID读取菜单详情 -->
-	<select id="GetMenuInfoByID">
+	<select id="GetMenuInfoByID" resultType="MenusModel">
 		SELECT
 		mID,mName,mFatherID,mFatherName,mAlt,mController,mAction,mLinkUrl,mStatus,mAddTime,mIconName
 		FROM t_menus where mID=#id
 	</select>
 	<!--得到所有的菜单 -->
-	<select id="getAllMenus">
+	<select id="getAllMenus" resultType="MenusModel">
 		SELECT
 		mID,mName,mFatherID,mFatherName,mAlt,mController,mAction,mLinkUrl,mStatus,mAddTime,mIconName
 		FROM t_menus
 	</select>
 	<!--得到所有顶级菜单 -->
-	<select id="GetAllTopMenus">
+	<select id="GetAllTopMenus" resultType="MenusModel">
 		SELECT
 		mID,mName,mFatherID,mFatherName,mAlt,mController,mAction,mLinkUrl,mStatus,mAddTime,mIconName
 		FROM t_menus where mFatherID=0
 	</select>
 	<!-- 根据父级ID查询菜单 -->
-	<select id="GetChildMenusByFatherID">
+	<select id="GetChildMenusByFatherID" resultType="MenusModel">
 		SELECT
 		mID,mName,mFatherID,mFatherName,mAlt,mController,mAction,mLinkUrl,mStatus,mAddTime,mIconName
 		FROM t_menus where mFatherID=#id

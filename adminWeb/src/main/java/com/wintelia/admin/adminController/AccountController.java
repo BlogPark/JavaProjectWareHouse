@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wintelia.admin.adminEntity.GroupModel;
+import com.wintelia.admin.adminEntity.MenusModel;
 import com.wintelia.admin.adminService.GroupService;
+import com.wintelia.admin.adminService.MenuService;
 
 @Controller
 @RequestMapping("/admin")
@@ -19,6 +21,8 @@ public class AccountController {
 
 	@Autowired
 	private GroupService groupservice;
+	@Autowired
+	private MenuService menuservice;
 
 	@RequestMapping("/groups")
 	public ModelAndView membergroups(HttpServletRequest request) {
@@ -50,6 +54,15 @@ public class AccountController {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("redirect:groups");
 		model.addObject("result", operateResult);
+		return model;
+	}
+
+	@RequestMapping("/menus")
+	public ModelAndView webmenu(HttpServletRequest request) {
+		List<MenusModel> menuslist = menuservice.getAllMenus();
+		ModelAndView model = new ModelAndView();
+		model.setViewName("webmenus");
+		model.addObject("menulist", menuslist);
 		return model;
 	}
 }
