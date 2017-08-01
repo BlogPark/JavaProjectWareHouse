@@ -2,3 +2,5 @@ E:\javapro\JavaProjectWareHouse\adminDao\src\main\java\com\wintelia\admin\adminD
 E:\javapro\JavaProjectWareHouse\adminDao\src\main\java\com\wintelia\admin\adminDao\MemberDao.java
 E:\javapro\JavaProjectWareHouse\adminDao\src\main\java\com\wintelia\admin\adminDao\AuthorityDao.java
 E:\javapro\JavaProjectWareHouse\adminDao\src\main\java\com\wintelia\admin\adminDao\MenuDao.java
+E:\javapro\JavaProjectWareHouse\adminDao\src\main\java\com\wintelia\admin\commonTool\JedisHelper.java
+E:\javapro\JavaProjectWareHouse\adminDao\src\main\java\com\wintelia\admin\commonTool\PropertiesHelper.java
