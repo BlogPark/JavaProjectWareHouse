@@ -1,2 +1,5 @@
 /.metadata/
 /.recommenders/
+adminDao/target/classes/META-INF/maven/com.wintelia.admin/adminDao/pom.properties
+adminEntity/target/classes/META-INF/maven/com.wintelia.admin/adminEntity/pom.properties
+adminService/target/classes/META-INF/maven/com.wintelia.admin/adminService/pom.properties
