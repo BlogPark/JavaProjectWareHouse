@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wintelia.admin.adminEntity.GroupModel;
@@ -64,5 +65,17 @@ public class AccountController {
 		model.setViewName("webmenus");
 		model.addObject("menulist", menuslist);
 		return model;
+	}
+
+	@RequestMapping(value = "/addmenu", method = RequestMethod.POST)
+	public ModelAndView addnewMenus(MenusModel model, int type, HttpServletRequest request) {
+		if (type == 1) {
+			System.out.println("新增");
+		} else {
+			System.out.println("修改");
+		}
+		ModelAndView modelandview = new ModelAndView();
+		modelandview.setViewName("redirect:menus");
+		return modelandview;
 	}
 }
